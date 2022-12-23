@@ -33,26 +33,5 @@ app.get("/create",function (request,response){
             })
     
 })
-// 3. Read all txt_files
-
-app.get("/read",function (request,response){
-    let txt_files=[];
-    fs.read(directoryName, function (error, files) {
-        //error
-        if (error) {
-            return console.log('Unable to scan directory: ' + error);
-        } 
-        
-        files.forEach(function (file) {
-            if(file.end(".txt")){
-                txt_files.push(file);
-            }     
-        });
-        response.json({
-            file_names:txt_files
-        })
-    });
-    
-})
 
 app.listen(PORT, () => console.log(`The server started in: ${PORT} ✨✨`));
